@@ -1,6 +1,6 @@
 {
   "name": "virtual-file-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Virtual File Loader for webpack",
   "main": "dist/index.js",
   "scripts": {

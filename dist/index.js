@@ -16,8 +16,8 @@ function patch(fs) {
 	const virtualFS = {
 		files: {},
 
-		add: function (options) {
-			var file = path.resolve(options.path);
+		add(options) {
+			const file = path.resolve(options.path);
 			virtualFS.files[file] = {
 				path: file,
 				content: options.content
@@ -69,25 +69,25 @@ function patch(fs) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
-				isFile: function () {
+				isFile() {
 					return true;
 				},
-				isDirectory: function () {
+				isDirectory() {
 					return false;
 				},
-				isBlockDevice: function () {
+				isBlockDevice() {
 					return false;
 				},
-				isCharacterDevice: function () {
+				isCharacterDevice() {
 					return false;
 				},
-				isSymbolicLink: function () {
+				isSymbolicLink() {
 					return false;
 				},
-				isFIFO: function () {
+				isFIFO() {
 					return false;
 				},
-				isSocket: function () {
+				isSocket() {
 					return false;
 				}
 			};
@@ -110,25 +110,25 @@ function patch(fs) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
-				isFile: function () {
+				isFile() {
 					return true;
 				},
-				isDirectory: function () {
+				isDirectory() {
 					return false;
 				},
-				isBlockDevice: function () {
+				isBlockDevice() {
 					return false;
 				},
-				isCharacterDevice: function () {
+				isCharacterDevice() {
 					return false;
 				},
-				isSymbolicLink: function () {
+				isSymbolicLink() {
 					return false;
 				},
-				isFIFO: function () {
+				isFIFO() {
 					return false;
 				},
-				isSocket: function () {
+				isSocket() {
 					return false;
 				}
 			};
