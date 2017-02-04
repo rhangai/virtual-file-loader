@@ -13,8 +13,8 @@ export function patch( fs ) {
 	const virtualFS = {
 		files: {},
 
-		add: function( options ) {
-			var file = path.resolve( options.path );
+		add( options ) {
+			const file = path.resolve( options.path );
 			virtualFS.files[ file ] = {
 				path:    file,
 				content: options.content
@@ -69,13 +69,13 @@ export function patch( fs ) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
- 				isFile: function() { return true; },
-				isDirectory: function() { return false; },
-				isBlockDevice: function() { return false; },
-				isCharacterDevice: function() { return false; },
-				isSymbolicLink: function() { return false; },
-				isFIFO: function() { return false; },
-				isSocket: function() { return false; },
+ 				isFile() { return true; },
+				isDirectory() { return false; },
+				isBlockDevice() { return false; },
+				isCharacterDevice() { return false; },
+				isSymbolicLink() { return false; },
+				isFIFO() { return false; },
+				isSocket() { return false; },
 			};
 			cb( null, vstat );
 			return;
@@ -96,13 +96,13 @@ export function patch( fs ) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
- 				isFile: function() { return true; },
-				isDirectory: function() { return false; },
-				isBlockDevice: function() { return false; },
-				isCharacterDevice: function() { return false; },
-				isSymbolicLink: function() { return false; },
-				isFIFO: function() { return false; },
-				isSocket: function() { return false; },
+ 				isFile() { return true; },
+				isDirectory() { return false; },
+				isBlockDevice() { return false; },
+				isCharacterDevice() { return false; },
+				isSymbolicLink() { return false; },
+				isFIFO() { return false; },
+				isSocket() { return false; },
 			};
 			return vstat;
 		}
