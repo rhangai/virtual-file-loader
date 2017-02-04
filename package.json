@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "npm run build && git add --force dist"
   },
-  "author": "",
+  "author": "renanhangai",
   "license": "ISC",
   "dependencies": {
     "loader-utils": "^0.2.16"
@@ -18,5 +18,19 @@
     "lodash": "^4.17.4",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renanhangai/virtual-file-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "virtual",
+    "file",
+    "loader"
+  ],
+  "bugs": {
+    "url": "https://github.com/renanhangai/virtual-file-loader/issues"
+  },
+  "homepage": "https://github.com/renanhangai/virtual-file-loader#readme"
 }
