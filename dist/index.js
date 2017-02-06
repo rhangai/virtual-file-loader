@@ -5,7 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var path = _interopDefault(require('path'));
 var loaderUtils = require('loader-utils');
 
-const NS = __filename;
+var NS = __filename;
 
 /**
  * Patch the file system
@@ -13,17 +13,16 @@ const NS = __filename;
 function patch(fs) {
 	if (fs[NS]) return;
 
-	const virtualFS = {
+	var virtualFS = {
 		files: {},
 
-		add(options) {
-			const file = path.resolve(options.path);
+		add: function add(options) {
+			var file = path.resolve(options.path);
 			virtualFS.files[file] = {
 				path: file,
 				content: options.content
 			};
 		}
-
 	};
 	fs[NS] = virtualFS;
 
@@ -69,25 +68,25 @@ function patch(fs) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
-				isFile() {
+				isFile: function isFile() {
 					return true;
 				},
-				isDirectory() {
+				isDirectory: function isDirectory() {
 					return false;
 				},
-				isBlockDevice() {
+				isBlockDevice: function isBlockDevice() {
 					return false;
 				},
-				isCharacterDevice() {
+				isCharacterDevice: function isCharacterDevice() {
 					return false;
 				},
-				isSymbolicLink() {
+				isSymbolicLink: function isSymbolicLink() {
 					return false;
 				},
-				isFIFO() {
+				isFIFO: function isFIFO() {
 					return false;
 				},
-				isSocket() {
+				isSocket: function isSocket() {
 					return false;
 				}
 			};
@@ -110,25 +109,25 @@ function patch(fs) {
 				ino: 44700000,
 				mode: 33188,
 				size: vfile.content.length,
-				isFile() {
+				isFile: function isFile() {
 					return true;
 				},
-				isDirectory() {
+				isDirectory: function isDirectory() {
 					return false;
 				},
-				isBlockDevice() {
+				isBlockDevice: function isBlockDevice() {
 					return false;
 				},
-				isCharacterDevice() {
+				isCharacterDevice: function isCharacterDevice() {
 					return false;
 				},
-				isSymbolicLink() {
+				isSymbolicLink: function isSymbolicLink() {
 					return false;
 				},
-				isFIFO() {
+				isFIFO: function isFIFO() {
 					return false;
 				},
-				isSocket() {
+				isSocket: function isSocket() {
 					return false;
 				}
 			};
@@ -144,15 +143,15 @@ function add(fs, options) {
 }
 
 function createPatchFn(obj, name, fn) {
-	const origin = obj[name];
+	var origin = obj[name];
 	obj[name] = function () {
-		const args = Array.prototype.slice.call(arguments);
+		var args = Array.prototype.slice.call(arguments);
 		return fn.apply(this, [origin, args].concat(args));
 	};
 }
 
 function VirtualFileLoader() {
-	const query = loaderUtils.parseQuery(this.query);
+	var query = loaderUtils.parseQuery(this.query);
 	if (!query.src) throw new Error("virtual-file-loader requires src param");
 	if (!query.file) throw new Error("virtual-file-loader requires file param");
 
@@ -165,7 +164,7 @@ function VirtualFileLoader() {
 		content: src
 	});
 
-	return `module.exports = require("${file}");`;
+	return 'module.exports = require("' + file.replace(/\\/g, '/') + '");';
 }
 
 function resolveFile(ctx, file) {
