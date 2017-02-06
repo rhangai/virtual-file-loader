@@ -20,7 +20,7 @@ function VirtualFileLoader() {
 		content: src
 	});
 
-	return `module.exports = require("${file}");`;
+	return `module.exports = require("${file.replace(/\\/g, '/')}");`;
 };
 
 function resolveFile( ctx, file ) {
